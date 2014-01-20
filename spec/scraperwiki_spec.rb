@@ -25,7 +25,7 @@ describe ScraperWiki do
   describe 'sqlite_magic_connection' do
     context 'and no config set' do
       it 'should get an SqliteMagic::Connection with default db name and no path' do
-        SqliteMagic::Connection.should_receive(:new).with('scraperwiki.sqlite').and_return(@dummy_sqlite_magic_connection)
+        SqliteMagic::Connection.should_receive(:new).with('data.sqlite').and_return(@dummy_sqlite_magic_connection)
         ScraperWiki.sqlite_magic_connection
       end
     end
@@ -88,8 +88,8 @@ describe ScraperWiki do
       ScraperWiki.save_sqlite(:unique_keys, :some_data)
     end
 
-    it 'should save data in swdata by default' do
-      @dummy_sqlite_magic_connection.should_receive(:save_data).with(anything, anything, 'swdata')
+    it 'should save data in data by default' do
+      @dummy_sqlite_magic_connection.should_receive(:save_data).with(anything, anything, 'data')
       ScraperWiki.save_sqlite(:unique_keys, :some_data)
     end
 

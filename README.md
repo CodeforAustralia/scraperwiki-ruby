@@ -27,7 +27,7 @@ automatically according to the data you save.
 
 Currently only supports SQLite. It will make a local SQLite database.
 
-### ScraperWiki.save\_sqlite(unique\_keys, data[, table\_name = "swdata"],verbose)
+### ScraperWiki.save\_sqlite(unique\_keys, data[, table\_name = "data"],verbose)
 
 Saves a data record into the datastore into the table given
 by *table_name*.
@@ -81,7 +81,7 @@ Allows for a simplified select statement
 
 ## Usage
 
-Run your Ruby scraper and any data saved will be put in an SQLite database in the current directory called `scraperwiki.sqlite`.
+Run your Ruby scraper and any data saved will be put in an SQLite database in the current directory called `data.sqlite`.
 
 If you're using scrapers from ScraperWiki Classic, remember to add `require 'scraperwiki'` to your file if it's not already there.
 

@@ -78,13 +78,13 @@ module ScraperWiki
   # * _unique_keys_ = A list of column names, that used together should be unique
   # * _data_ = A hash of the data where the Key is the column name, the Value the row
   #            value. If sending lots of data this can be a array of hashes.
-  # * _table_name_ = The name that the newly created table should use (default is 'swdata').
+  # * _table_name_ = The name that the newly created table should use (default is 'data').
   # * _verbose_ = A verbosity level (not currently implemented, and there just to avoid breaking existing code)
   #
   # === Example
   # ScraperWiki::save(['id'], {'id'=>1})
   #
-  def save_sqlite(unique_keys, data, table_name="swdata",_verbose=0)
+  def save_sqlite(unique_keys, data, table_name="data",_verbose=0)
     converted_data = convert_data(data)
     sqlite_magic_connection.save_data(unique_keys, converted_data, table_name)
   end
@@ -166,7 +166,7 @@ module ScraperWiki
   # An array of hashes containing the returned data
   #
   # === Example
-  # ScraperWiki.select('* from swdata')
+  # ScraperWiki.select('* from data')
   #
   def select(sqlquery, data=nil, _verbose=1)
     sqlite_magic_connection.execute("SELECT "+sqlquery, data)
@@ -174,7 +174,7 @@ module ScraperWiki
 
   # Establish an SQLiteMagic::Connection (and remember it)
   def sqlite_magic_connection
-    db = @config ? @config[:db] : 'scraperwiki.sqlite'
+    db = @config ? @config[:db] : 'data.sqlite'
     @sqlite_magic_connection ||= SqliteMagic::Connection.new(db)
   end
 
